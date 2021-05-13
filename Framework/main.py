@@ -1,6 +1,6 @@
 import quopri
 
-from Framework.requests import PostRequests, GetRequests
+from requests import PostRequests, GetRequests
 from views import PageNotFound404
 
 
@@ -35,6 +35,7 @@ class MyFirstFramework:
                   f'{MyFirstFramework.decode_value(data)}')
         if method == 'GET':
             request_params = GetRequests().get_request_params(environ)
+            request_params = MyFirstFramework.decode_value(request_params)
             request['request_params'] = request_params
             print(f'Нам пришли GET-параметры: {request_params}')
 
